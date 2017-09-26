@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import {Flex, Box} from 'grid-styled';
+import styled from 'styled-components';
 import SideBar from './SideBar';
 import Main from './Main';
+
+const MainLayout = styled.div`
+  display: flex;
+  height: 100%;
+  margin: 0 auto;
+`;
+
 
 class App extends Component {
   render() {
     return (
-      <Flex>
-        <Box width={1/10}>
+      <MainLayout className="main-layout">
           <SideBar/>
-        </Box>
-        <Box width={9/10}>
           <Main/>
-        </Box>
-      </Flex>
+      </MainLayout>
     );
   }
 }
