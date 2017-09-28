@@ -9,23 +9,34 @@ import {
   } from 'react-router-dom';
 
 const SideNavLink = styled(NavLink)`
-    color: red;
     text-decoration: none;
     height: 100%;
     width: 100%;
-    border-right: 1px solid grey;
+    border: 1px outset #F8F8FF;
+
+    &.intro-link {
+        background-color: #42d9f4;
+        color: white;
+        line-height: 1000%;
+    }
     &.bio-link, &.timeline-link, &.skills-link, &.projects-link {
-         background-color: white;
+         background-color: #FFFFFF;
+         color: #42d9f4;
+         line-height: 1000%;
     }
     &.active {
-        border-bottom: 1px solid grey;
-        border-top: 1px solid grey;
         border-right: 0px;
 
         &.intro-link {
             border-top: 0px;
-            border-bottom: 1px solid grey;
         }
+
+        &.bio-link, &.timeline-link {
+            border-top: 1px outset #F8F8FF;
+            border-bottom: 1px outset #F8F8FF;
+
+        }
+
     }
 `;
 
@@ -43,9 +54,18 @@ const NavList = styled.ul`
 const NavListItem = styled.li`
     text-align: center;
     margin: 0 auto;
+    margin-left: 0px;
+    margin-right: 0px;
     display: flex;
     height: 100%;
     width: 100px;
+    padding-left: 0px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+    &.listitem-intro {
+        padding-top: 0px;
+    }
 `;
 
 const NavSection = styled.section`
@@ -53,7 +73,6 @@ const NavSection = styled.section`
   height: 100%;
   margin: 0;
   padding: 0px;
-  background-color: #00BFFF;
 `;
 
 
@@ -73,7 +92,7 @@ class SideBar extends Component {
         return (
             <NavSection className="nav-section">
                     <NavList className="nav-list">
-                        <NavListItem>
+                        <NavListItem className="listitem-intro">
                             <SideNavLink exact to="/" className="intro-link">Intro</SideNavLink>
                         </NavListItem>
                         <NavListItem>

@@ -3,6 +3,7 @@ body {
   padding: 0;
   overflow-y: hidden;
   height: 100%;
+  font-family: 'Pangolin', cursive; 
 }
 
 html {
