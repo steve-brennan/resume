@@ -9,34 +9,36 @@ import {
   } from 'react-router-dom';
 
 const SideNavLink = styled(NavLink)`
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     height: 100%;
     width: 100%;
-    border: 1px outset #F8F8FF;
+    border-bottom: 1px outset #F8F8FF;
+    border-right: 1px outset #F8F8FF;
+    border-radius: 1px;
+
+    margin-top: 0px;
+    margin-bottom: 0px;
 
     &.intro-link {
         background-color: #42d9f4;
         color: white;
-        line-height: 1000%;
+        line-height: 250%;
+        border: none;
+        border-right: 1px outset #F8F8FF;
     }
     &.bio-link, &.timeline-link, &.skills-link, &.projects-link {
          background-color: #FFFFFF;
          color: #42d9f4;
-         line-height: 1000%;
+         line-height: 250%;
     }
     &.active {
         border-right: 0px;
 
         &.intro-link {
-            border-top: 0px;
+            border: none;
         }
-
-        &.bio-link, &.timeline-link {
-            border-top: 1px outset #F8F8FF;
-            border-bottom: 1px outset #F8F8FF;
-
-        }
-
     }
 `;
 
@@ -52,6 +54,8 @@ const NavList = styled.ul`
 `;
 
 const NavListItem = styled.li`
+    display: flex;
+    flex-direction: column;
     text-align: center;
     margin: 0 auto;
     margin-left: 0px;
@@ -60,8 +64,10 @@ const NavListItem = styled.li`
     height: 100%;
     width: 100px;
     padding-left: 0px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    /*padding-top: 1px;*/
+    /*padding-bottom: 1px;*/
+
+    margin-top: 0px;
 
     &.listitem-intro {
         padding-top: 0px;
@@ -69,11 +75,25 @@ const NavListItem = styled.li`
 `;
 
 const NavSection = styled.section`
-  display: flex;
-  height: 100%;
-  margin: 0;
-  padding: 0px;
+    display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 0px;
 `;
+
+const NavIcon = styled.i`
+    font-size: 50px;
+    line-height: 200%;
+    $.icon-bio, &.icon-timeline, &.icon-skills, &.icon-projects {
+        background-color: #FFFFFF;
+    }
+
+    $.icon-intro {
+        background-color: #42d9f4;
+    }
+
+    
+`
 
 
 
@@ -93,19 +113,34 @@ class SideBar extends Component {
             <NavSection className="nav-section">
                     <NavList className="nav-list">
                         <NavListItem className="listitem-intro">
-                            <SideNavLink exact to="/" className="intro-link">Intro</SideNavLink>
+                            <SideNavLink exact to="/" className="intro-link">
+                                Intro 
+                                <NavIcon className="material-icons icon-intro">face</NavIcon>
+                            </SideNavLink>
                         </NavListItem>
                         <NavListItem>
-                            <SideNavLink exact to="/bio" className="bio-link">Bio</SideNavLink>
+                            <SideNavLink exact to="/bio" className="bio-link">
+                                Bio
+                                <NavIcon className="material-icons icon-bio">accessibility</NavIcon>
+                            </SideNavLink>
                         </NavListItem>
                         <NavListItem>
-                            <SideNavLink exact to="/timeline" className="timeline-link">Timeline</SideNavLink>
+                            <SideNavLink exact to="/timeline" className="timeline-link">
+                                Timeline
+                                <NavIcon className="material-icons icon-timeline">timeline</NavIcon>
+                            </SideNavLink>
                         </NavListItem>
                         <NavListItem>
-                            <SideNavLink exact to="/skills" className="skills-link">Skills</SideNavLink>
+                            <SideNavLink exact to="/skills" className="skills-link">
+                                Skills
+                                <NavIcon className="material-icons icon-skills">build</NavIcon>
+                            </SideNavLink>
                         </NavListItem>
                         <NavListItem>
-                            <SideNavLink exact to="/projects" className="projects-link">Projects</SideNavLink>
+                            <SideNavLink exact to="/projects" className="projects-link">
+                                Projects
+                                <NavIcon className="material-icons icon-projects">work</NavIcon>
+                            </SideNavLink>
                         </NavListItem>
                     </NavList>
             </NavSection>
