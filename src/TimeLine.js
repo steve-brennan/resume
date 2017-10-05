@@ -2,111 +2,96 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const TimelineSection = styled.section`
-    border: 1px solid red;
     margin: 0 auto;
     width: 100%;
-    display: flex;
+    height: inherit;
 `;
 
 const TimelineView = styled.div`
-    border: 1px solid blue;
-    flex: 1.5;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 `;
 
 const TimelineControls = styled.div`
-    border: 1px solid green;
-    flex: 0.1;
+    margin: 0 auto;
+    flex: 0.1 0.1 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: space-evenly;
     justify-content: center;
-`;
 
-const TimelineDetail = styled.div`
-    border: 1px solid blue;
-    flex: auto;
-`;
-
-const TimelineDisplay = styled.div`
-    border: 1px solid green;
-    flex: 2;
-    display: flex;
-    flex-direction: row;
-`;
-
-const TimelineDisplayLeft = styled.div`
-
-    display: flex;
-    flex-direction: column;
-    margin-top: 75px;
-    align-items: flex-end;
-    width: 50%;
-`;
-
-
-const TimelineDisplayRight = styled.div`
-    border: 1px solid red;
-    display: flex; 
-    flex-direction: coulmn;
-    width: 50%;
-`;
-
-const TimelineItemContainer = styled.div`
-
-    display: flex;
-    flex: auto;
-    flex-direction: row;
-    justify-content: end;
-    width: 100%;
-    height: 10px;
-
-    margin-top: 100px;
-    margin-bottom: 50px;
+    width: 70%;
+    border-bottom: 1px solid #006fff;
 
     
 `;
 
-const TimelineBufferContainer = styled.div`
-
+const TimelineDisplay = styled.div`
+    margin: 0 auto;
+    flex: 2 2 auto;
     display: flex;
-    flex: 0.5;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    align-items: center;
+    overflow-y: scroll;
+   
+    
+`;
+
+const TimelineItemContainer = styled.div`
+    display: flex;
+    flex: 0 0 auto;
+    
+    width: 70%;
+    height: 50%;
     flex-direction: column;
 `;
 
-const TimelineItemBufferTop = styled.div`
-    border-bottom: 1px solid blue;
+const TimelineBufferContainer = styled.div`
+    display: flex;
+    flex: 0.5;
+    flex-direction: row;
+    height: 50%
+`;
+
+const TimelineItemBufferLeft = styled.div`
+    border-right: 1px solid #006fff;
     flex: auto;
 `;
 
-const TimelineItemBufferBottom = styled.div`
-    border-top: 1px solid blue;
+const TimelineItemBufferRight = styled.div`
+    border-left: 1px hidden #006fff;
     flex: auto;
 `;
 
 function TimelineBuffer() {
     return (
     <TimelineBufferContainer className="timeline-buffer-container">
-        <TimelineItemBufferTop className="timeline-item-buffer-top"></TimelineItemBufferTop>
-        <TimelineItemBufferBottom className="timeline-item-buffer-bottom"></TimelineItemBufferBottom>
+        <TimelineItemBufferLeft className="timeline-item-buffer-top"></TimelineItemBufferLeft>
+        <TimelineItemBufferRight className="timeline-item-buffer-bottom"></TimelineItemBufferRight>
     </TimelineBufferContainer>
     );
 }
 
 const TimelineEntry = styled.div`
-    border: 1px solid black;
+    border: 1px solid #006fff;
+    border-radius: 5px;
     flex: auto;
-    
-    margin-top: 50px;
-    margin-bottom: 50px;
+    height: 50%;
 
 `;
 
 function TimelineItem(props){
     return (
-    <TimelineItemContainer className="timeline-item-container">
+    <TimelineItemContainer align={props.align} className="timeline-item-container">
+        <TimelineBuffer className="timneline-buffer"></TimelineBuffer>
         <TimelineEntry className="timeline-entry"></TimelineEntry>
         <TimelineBuffer className="timneline-buffer"></TimelineBuffer>
     </TimelineItemContainer>
@@ -115,14 +100,18 @@ function TimelineItem(props){
 
 
 const Button = styled.button`
-    border: 1px solid black;
+    border: 1px solid #006fff;
     flex-shrink: 0;
     width: 40%;
     flex: 1 1 auto;
     margin: 10px;
     border-radius: 10px;
-    background-color: ${ props => props.active ? '#42d9f4' : 'white'};
-    color: ${props => props.active ? 'white' : '#42d9f4'};
+    background-color: ${ props => props.active ? '#006fff' : 'white'};
+    color: ${props => props.active ? 'white' : '#006fff'};
+
+    &:focus {
+        outline:0;
+    }
 `;
 
 class Timeline extends Component {
@@ -180,15 +169,15 @@ class Timeline extends Component {
                             active={this.state.activeButtons.includes("show-other-btn") ? true : false} 
                             onClick={this.handleButtonClick}>Other</Button>
                     </TimelineControls>
-                    <TimelineDetail className="timeline-details"></TimelineDetail>   
+                    <TimelineDisplay className="timeline-display">
+                       <TimelineItem>item 1</TimelineItem>
+                       <TimelineItem>item 1</TimelineItem>
+                       <TimelineItem>item 1</TimelineItem>
+                       <TimelineItem>item 1</TimelineItem>
+                       <TimelineItem>item 1</TimelineItem>
+                    </TimelineDisplay>
                 </TimelineView>
-                <TimelineDisplay className="timeline-display">
-                    <TimelineDisplayLeft className="timeline-display-left">
-                        <TimelineItem className="timeline-item">item 1</TimelineItem>
-                        <TimelineItem className="timeline-item">item 2</TimelineItem>
-                    </TimelineDisplayLeft>
-                    <TimelineDisplayRight className="timeline-display-right"></TimelineDisplayRight>
-                </TimelineDisplay>
+                
             </TimelineSection>
         );
     }

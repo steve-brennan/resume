@@ -64,8 +64,6 @@ const NavListItem = styled.li`
     height: 100%;
     width: 100px;
     padding-left: 0px;
-    /*padding-top: 1px;*/
-    /*padding-bottom: 1px;*/
 
     margin-top: 0px;
 
