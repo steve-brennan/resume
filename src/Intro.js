@@ -6,7 +6,7 @@ const IntroSection = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #42d9f4;
+    background-color: ${props => props.theme.primaryColor};
     height: 100%;
     margin-bottom: -10px;
     flex: 2;
@@ -14,6 +14,7 @@ const IntroSection = styled.section`
 
 const IntroHeading = styled.h1`
     text-align: center;
+    font-family: ${props => props.theme.primaryFontFamily};
     font-size: 50px;
     margin: 0 auto;
     color: white;
@@ -21,6 +22,7 @@ const IntroHeading = styled.h1`
 
 const IntroSubHeading = styled.h2`
     text-align: center;
+    font-family: ${props => props.theme.primaryFontFamily};
     font-size: 30px;
     margin: 0 auto;
     color: white;

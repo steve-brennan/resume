@@ -25,7 +25,7 @@ const TimelineControls = styled.div`
     justify-content: center;
 
     width: 70%;
-    border-bottom: 1px solid #006fff;
+    border-bottom: 1px solid ${props => props.theme.primaryColor};
 
     
 `;
@@ -62,12 +62,12 @@ const TimelineBufferContainer = styled.div`
 `;
 
 const TimelineItemBufferLeft = styled.div`
-    border-right: 1px solid #006fff;
+    border-right: 1px solid ${props => props.theme.primaryColor};
     flex: auto;
 `;
 
 const TimelineItemBufferRight = styled.div`
-    border-left: 1px hidden #006fff;
+    border-left: 1px hidden ${props => props.theme.primaryColor};
     flex: auto;
 `;
 
@@ -81,7 +81,7 @@ function TimelineBuffer() {
 }
 
 const TimelineEntry = styled.div`
-    border: 1px solid #006fff;
+    border: 1px solid ${props => props.theme.primaryColor};
     border-radius: 5px;
     flex: auto;
     height: 50%;
@@ -100,14 +100,14 @@ function TimelineItem(props){
 
 
 const Button = styled.button`
-    border: 1px solid #006fff;
+    border: 1px solid ${props => props.theme.primaryColor};
     flex-shrink: 0;
     width: 40%;
     flex: 1 1 auto;
     margin: 10px;
     border-radius: 10px;
-    background-color: ${ props => props.active ? '#006fff' : 'white'};
-    color: ${props => props.active ? 'white' : '#006fff'};
+    background-color: ${ props => props.active ? props.theme.primaryColor : 'white'};
+    color: ${props => props.active ? 'white' : props.theme.primaryColor};
 
     &:focus {
         outline:0;

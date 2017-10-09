@@ -12,25 +12,25 @@ const SideNavLink = styled(NavLink)`
     display: flex;
     flex-direction: column;
     text-decoration: none;
+    font-family: ${props => props.theme.primaryFontFamily};
     height: 100%;
     width: 100%;
-    border-bottom: 1px outset #F8F8FF;
-    border-right: 1px outset #F8F8FF;
+    border-bottom: 1px solid ${props => props.theme.primaryColorLighter};
+    border-right: 1px solid  ${props => props.theme.primaryColorLighter};
     border-radius: 1px;
-
     margin-top: 0px;
     margin-bottom: 0px;
 
     &.intro-link {
-        background-color: #42d9f4;
+        background-color: ${props => props.theme.primaryColor};
         color: white;
         line-height: 250%;
         border: none;
-        border-right: 1px outset #F8F8FF;
+        border-right: 1px solid  ${props => props.theme.primaryColorLighter};
     }
     &.bio-link, &.timeline-link, &.skills-link, &.projects-link {
          background-color: #FFFFFF;
-         color: #42d9f4;
+         color: ${props => props.theme.primaryColor};
          line-height: 250%;
     }
     &.active {
@@ -64,7 +64,6 @@ const NavListItem = styled.li`
     height: 100%;
     width: 100px;
     padding-left: 0px;
-
     margin-top: 0px;
 
     &.listitem-intro {
@@ -87,12 +86,10 @@ const NavIcon = styled.i`
     }
 
     $.icon-intro {
-        background-color: #42d9f4;
+        background-color: ${props => props.theme.primaryColor};
     }
 
-    
 `
-
 
 
 class SideBar extends Component {
