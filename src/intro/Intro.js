@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {Flex, Box} from 'grid-styled';
 
 const IntroSection = styled.section`
     display: flex;
@@ -27,7 +26,6 @@ const IntroSubHeading = styled.h2`
     margin: 0 auto;
     color: white;
 `
-
 
 class Intro extends Component {
 

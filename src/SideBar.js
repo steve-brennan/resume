@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {Flex, Box} from 'grid-styled';
 import {
     BrowserRouter as Router,
     Route,
@@ -90,7 +89,6 @@ const NavIcon = styled.i`
     }
 
 `
-
 
 class SideBar extends Component {
     constructor(props) {

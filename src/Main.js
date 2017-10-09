@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
-import Intro from './Intro';
-import Bio from './Bio';
-import Timeline from './Timeline';
-import Skills from './Skills';
-import Projects from './Projects';
+import Intro from './intro/Intro';
+import Bio from './bio/Bio';
+import Timeline from './timeline/Timeline';
+import Skills from './skills/Skills';
+import Projects from './projects/Projects';
 
 const Main = () => (
 
