@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-    NavLink
-  } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const SideNavLink = styled(NavLink)`
     display: flex;
