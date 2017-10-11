@@ -3,21 +3,6 @@ import styled from 'styled-components';
 import {TimelineControls, ControlButton} from './TimelineControls';
 import {TimelineDisplay} from './TimelineDisplay';
 
-const timelineEntries = [
-    
-        {
-            id: '1',
-            place: 'Acme',
-            time: '2001 to 2050',
-            role: 'Technician'
-        },
-        {
-            id: '2',
-            place: 'CoolTech',
-            time: '2051 to 2060',
-            role: 'CEO'
-        }
-];
 
 const TimelineSection = styled.section`
     margin: 0 auto;
@@ -92,8 +77,7 @@ class Timeline extends Component {
                             active={this.state.activeButtons.includes("show-other-btn") ? true : false} 
                             onClick={this.handleControlButtonClick}>Other</ControlButton>
                     </TimelineControls>
-                    <TimelineDisplay timelineEntries={timelineEntries} className="timeline-display">
-
+                    <TimelineDisplay timelineEntries={[]} className="timeline-display">
                     </TimelineDisplay>
                 </TimelineView>
                 

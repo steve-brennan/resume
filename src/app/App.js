@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import styled, {ThemeProvider} from 'styled-components';
 import SideBar from './SideBar';
 import Main from './Main';
+import dbconfig from './firebase-config';
+import * as firebase from 'firebase';
+import 'firebase/firestore';
 
 const theme = {
   primaryFontFamily: "'Roboto', sans-serif",
@@ -9,8 +12,6 @@ const theme = {
   primaryColor: "#00BFFF", 
   primaryColorLighter: '#87CEEB',
   primaryColorDarker: '#0074D9',
-
-  primaryBorderColor: '#F0F8FF' // aliceblue
 
 };
 
@@ -22,6 +23,19 @@ const Layout = styled.div`
 
 
 class App extends Component {
+
+  constructor() {
+    super();
+    firebase.initializeApp(dbconfig);
+    const db = firebase.firestore();
+    
+    db.collection("timeline").get().then((collection) =>{
+        collection.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data().entry.role}`);
+        });
+    });
+  }
+
   render() {
     return (
       <ThemeProvider theme={theme}>
