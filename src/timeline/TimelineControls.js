@@ -1,4 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
+import ControlLink from './ControlLink'
+import {TimelineVisibilityFilters} from '../actions';
 
 const TimelineControls = styled.div`
     margin: 0 auto;
@@ -8,26 +11,32 @@ const TimelineControls = styled.div`
     flex-wrap: wrap;
     align-content: space-evenly;
     justify-content: center;
-
     width: 70%;
     border-bottom: 1px solid ${props => props.theme.primaryColor};
 `;
 
-const ControlButton = styled.button`
-    border: 1px solid ${props => props.theme.primaryColor};
-    flex-shrink: 0;
-    width: 40%;
-    flex: 1 1 auto;
-    margin: 10px;
-    border-radius: 10px;
-    background-color: ${ props => props.active ? props.theme.primaryColor : 'white'};
-    color: ${props => props.active ? 'white' : props.theme.primaryColor};
+function TimelineControlsView(props)  {
+    
+    return ( 
+        <TimelineControls>
+            <ControlLink id="show-all-link" 
+                className="show-all-link"
+                filter={TimelineVisibilityFilters.SHOW_ALL}
+                >All</ControlLink>
+            <ControlLink id="show-relevant-link" 
+                className="show-relevant-link"
+                filter={TimelineVisibilityFilters.SHOW_RELEVANT}
+                >Professional Software</ControlLink>
+            <ControlLink id="show-education-link" 
+                className="show-education-link"
+                filter={TimelineVisibilityFilters.SHOW_EDUCATION}
+                >Education</ControlLink>                       
+            <ControlLink id="show-other-link" 
+                className="show-other-link"
+                filter={TimelineVisibilityFilters.SHOW_OTHER}
+                >Other</ControlLink>
+        </TimelineControls>
+    )
+}
 
-    &:focus {
-        outline:0;
-    }
-`;
-
-
-
-export {TimelineControls, ControlButton};
+export {TimelineControlsView};
