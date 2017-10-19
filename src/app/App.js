@@ -28,10 +28,14 @@ class App extends Component {
     super();
     firebase.initializeApp(dbconfig);
     const db = firebase.firestore();
+
+
     
-    db.collection("timeline").get().then((collection) =>{
+    db.collection("timelineEntries").get().then((collection) =>{
+        //var collection = doc('entries');
         collection.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data().entry.role}`);
+            console.log(`${doc.id} => ${doc.data().role}`);
+            
         });
     });
   }

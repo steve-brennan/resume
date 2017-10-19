@@ -11,6 +11,8 @@
     "react-scripts": "1.0.13",
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "styled-components": "^2.1.2"
   },
   "scripts": {
