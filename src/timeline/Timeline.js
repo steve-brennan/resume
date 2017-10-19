@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import {TimelineControlsView} from './TimelineControls';
 import {TimelineDisplay} from './TimelineDisplay';
+import {getEntriesIfNeeded} from '../actions'
 import {connect} from 'react-redux';
 import {TimelineVisibilityFilters} from '../actions';
 
@@ -21,17 +22,25 @@ const TimelineView = styled.div`
 
 class Timeline extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        const {dispatch} = this.props;
+        dispatch(getEntriesIfNeeded());
+    }
+
     render() {
+        const {timelineEntries} =  this.props;
         return (
             <TimelineSection className="timeline-section">
                 <TimelineView className="timeline-view">
                     <TimelineControlsView className="timeline-controls">
-
                     </TimelineControlsView>
-                    <TimelineDisplay timelineEntries={[]} className="timeline-display">
+                    <TimelineDisplay timelineEntries={timelineEntries} className="timeline-display">
                     </TimelineDisplay>
                 </TimelineView>
-                
             </TimelineSection>
         );
     }
@@ -52,9 +61,9 @@ const getVisisibleTimelineEntries = (timelineEntries, filter) => {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-
+        timelineEntries: state.timelineEntries
     }
 }
 
@@ -64,4 +73,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect( mapStateToProps, mapDispatchToProps)  (Timeline);
+export default connect( mapStateToProps, null)  (Timeline);

@@ -4,14 +4,13 @@ import styled from 'styled-components';
 
 function TimelineDisplay(props) {
     const entries = props.timelineEntries;
-
     const entryList = entries.map((entry) => {
         return (
         <TimelineItem id={entry.id}
             key={entry.id.toString()}
-            place={entry.place}
-            time={entry.time}
-            role={entry.role}
+            place={entry.data().organisation}
+            //time={entry.time}
+            role={entry.data().role}
             />
         );
     });

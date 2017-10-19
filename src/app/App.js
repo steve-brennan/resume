@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled, {ThemeProvider} from 'styled-components';
 import SideBar from './SideBar';
 import Main from './Main';
+import { connect } from 'react-redux'
 import dbconfig from './firebase-config';
 import * as firebase from 'firebase';
 import 'firebase/firestore';
@@ -27,18 +28,23 @@ class App extends Component {
   constructor() {
     super();
     firebase.initializeApp(dbconfig);
-    const db = firebase.firestore();
+
+
+    // const db = firebase.firestore();
 
 
     
-    db.collection("timelineEntries").get().then((collection) =>{
-        //var collection = doc('entries');
-        collection.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data().role}`);
+    // db.collection("timelineEntries").get().then((collection) =>{
+    //     //var collection = doc('entries');
+    //     collection.forEach((doc) => {
+    //         console.log(`${doc.id} => ${doc.data().role}`);
             
-        });
-    });
+    //     });
+    // });
   }
+
+
+
 
   render() {
     return (
@@ -52,4 +58,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default  App;
