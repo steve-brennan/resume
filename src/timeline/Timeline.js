@@ -46,24 +46,23 @@ class Timeline extends Component {
     }
 }
 
-const getVisisibleTimelineEntries = (timelineEntries, filter) => {
-    switch(filter) {
-        case TimelineVisibilityFilters.SHOW_ALL:
-            return timelineEntries;
-        case TimelineVisibilityFilters.SHOW_RELEVANT:
-            return timelineEntries.filter(t => t.category === 'relevant');
-        case TimelineVisibilityFilters.SHOW_EDUCATION:
-            return timelineEntries.filter(t => t.category === 'education');
-        case TimelineVisibilityFilters.SHOW_OTHER:
-            return timelineEntries.filter(t => t.category === 'other');
-        default:
-            return timelineEntries;
+const getVisisibleTimelineEntries = (timelineEntries, filters) => {
+    if(filters.includes(TimelineVisibilityFilters.SHOW_ALL)) {
+        return timelineEntries;
     }
+    var entries = timelineEntries.slice();
+    return entries.filter((entry) => {
+        if(filters.includes(entry.data().category)) {
+            return true;
+        }
+        return false;
+    })
 }
 
 const mapStateToProps = (state, ownProps) => {
+    //console.log('STATE ' + state.timelineVisibilityFilters)
     return {
-        timelineEntries: state.timelineEntries
+        timelineEntries: getVisisibleTimelineEntries( state.timelineEntries, state.timelineVisibilityFilters)
     }
 }
 
