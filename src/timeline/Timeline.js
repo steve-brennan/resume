@@ -45,16 +45,25 @@ class Timeline extends Component {
 }
 
 const getVisisibleTimelineEntries = (timelineEntries, filters) => {
+
+    let visibileEntries = [];
     if(filters.includes(TimelineVisibilityFilters.SHOW_ALL)) {
-        return timelineEntries;
+        visibileEntries = timelineEntries;
+    } else { 
+        visibileEntries = timelineEntries.filter((entry) => {
+            if(filters.includes(entry.data().category)) {
+                return true;
+            }
+            return false;
+        })
     }
-    var entries = timelineEntries.slice();
-    return entries.filter((entry) => {
-        if(filters.includes(entry.data().category)) {
-            return true;
-        }
-        return false;
+    visibileEntries.sort((a,b) => {
+        console.log("sorting...");
+        let dateA = new Date(a.data().dateFrom);
+        let dateB = new Date(b.data().dateFrom);
+        return dateA - dateB;
     })
+    return visibileEntries;
 }
 
 const mapStateToProps = (state, ownProps) => {
