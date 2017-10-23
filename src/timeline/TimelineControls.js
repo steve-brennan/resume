@@ -15,10 +15,10 @@ const TimelineControls = styled.div`
     border-bottom: 1px solid ${props => props.theme.primaryColor};
 `;
 
-function TimelineControlsView(props)  {
+function TimelineControlsDisplay(props)  {
     
     return ( 
-        <TimelineControls>
+        <TimelineControls className="timeline-controls">
             <ControlLink id="show-all-link" 
                 className="show-all-link"
                 filter={TimelineVisibilityFilters.SHOW_ALL}
@@ -39,4 +39,4 @@ function TimelineControlsView(props)  {
     )
 }
 
-export {TimelineControlsView};
+export {TimelineControlsDisplay};

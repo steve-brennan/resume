@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {TimelineControlsView} from './TimelineControls';
-import {TimelineDisplay} from './TimelineDisplay';
+import {TimelineControlsDisplay} from './TimelineControls';
+import {TimelineEntryListDisplay} from './TimelineEntryList';
 import {getEntriesIfNeeded} from '../actions'
 import {connect} from 'react-redux';
 import {TimelineVisibilityFilters} from '../actions';
@@ -36,10 +36,8 @@ class Timeline extends Component {
         return (
             <TimelineSection className="timeline-section">
                 <TimelineView className="timeline-view">
-                    <TimelineControlsView className="timeline-controls">
-                    </TimelineControlsView>
-                    <TimelineDisplay timelineEntries={timelineEntries} className="timeline-display">
-                    </TimelineDisplay>
+                    <TimelineControlsDisplay/>
+                    <TimelineEntryListDisplay timelineEntries={timelineEntries}/>
                 </TimelineView>
             </TimelineSection>
         );
@@ -60,7 +58,6 @@ const getVisisibleTimelineEntries = (timelineEntries, filters) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    //console.log('STATE ' + state.timelineVisibilityFilters)
     return {
         timelineEntries: getVisisibleTimelineEntries( state.timelineEntries, state.timelineVisibilityFilters)
     }
