@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import {TimelineEntryDisplay} from './TimelineEntry';
 
 
-
-
-
-
 const TimelineItemBufferLeft = styled.div`
     border-right: 1px solid ${props => props.theme.primaryColor};
     flex: 1 0 auto;
@@ -21,9 +17,8 @@ const TimelineItemBufferRight = styled.div`
 
 const TimelineBufferContainer = styled.div`
     display: flex;
-    flex: 1 1 auto ;
+    flex: 1 0 auto ;
     flex-direction: row;
-    /*height: 50%;*/
 
 `;
 
@@ -40,12 +35,11 @@ const TimelineListItem = styled.li`
     display: flex;
     flex: 1 0 auto;
     width: 70%;
-    height: 25%;
+    height: 50%;
     flex-direction: column;
 `;
 
 const TimelineEntryList = styled.ul`
-
     margin: 0 auto;
     flex: 2 2 auto;
     display: flex;
@@ -55,7 +49,6 @@ const TimelineEntryList = styled.ul`
     justify-content: flex-start;
     align-items: center;
     overflow-y: scroll;
-
     list-style-type: none;
     padding: 0;
 `;
@@ -63,7 +56,6 @@ const TimelineEntryList = styled.ul`
 function TimelineEntryListDisplay(props) {
     const entries = props.timelineEntries;
     const entryList = entries.map((entry) => {
-        console.log("TIME " + entry.data().dateFrom.getTime());
         return (
         <TimelineListItem className="timeline-list-item" key={entry.id.toString()}>
             <TimelineBuffer/>

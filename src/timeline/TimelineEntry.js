@@ -17,18 +17,16 @@ const TimelineEntryHeading = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     padding-bottom: 10px;
+    padding-top: 10px;
     border-bottom: 1px solid ${props => props.theme.primaryColor};
     justify-content: center;
-
     border-radius: 5px;
-    background-color: ${props => props.theme.primaryColorLighter};
-    
     font-family: ${props => props.theme.primaryFontFamily};
-
     background-color: ${props => props.theme.primaryColor};
     color: white;
+    height: 30px;
 `
 
 const TimelineEntryPlace = styled.div`
@@ -39,16 +37,19 @@ const TimelineEntryPlace = styled.div`
 `
 
 const TimelineEntryDates = styled.div`
-    text-align: center;
+    text-align: right;
     flex: 1 1 auto;
-
+    align-self: flex-end;
+    font-style: italic;
     font-family: ${props => props.theme.primaryFontFamily};
+    padding-right: 10px;
+    padding-bottom: 5px;
 `
 
 const TimelineEntryRole = styled.div`
-    text-align: center;
+    text-align: left;
     flex: 1 1 auto;
-
+    padding-left: 5px;
     font-family: ${props => props.theme.primaryFontFamily};
     font-weight: bold;
 
@@ -56,9 +57,39 @@ const TimelineEntryRole = styled.div`
 
 const TimelineEntryBody = styled.div`
     flex: 2 1 auto;
-
     font-family: ${props => props.theme.primaryFontFamily};
+    color: darkgrey;
 `
+
+const TimelineEnrtyDetail = styled.li`
+    flex: 1 1 auto;
+`
+
+const TimelineEntryDetailsList = styled.ul`
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    list-style: square;
+    padding-top: 10px;
+    
+`
+
+function TimelineEntryDetailsDisplay(props) {
+
+    const detailsList = props.details.map((detail) => {
+
+        return (
+            <TimelineEnrtyDetail>{detail}</TimelineEnrtyDetail>
+        )
+    });
+
+    return (
+        <TimelineEntryDetailsList>{detailsList}</TimelineEntryDetailsList>
+    )
+    
+}
+
+
 
 function TimelineEntryDisplay(props){
     return (
@@ -69,7 +100,7 @@ function TimelineEntryDisplay(props){
                 <TimelineEntryDates>{moment(props.dateFrom).format('MMM YYYY') +" "+ moment(props.dateTo).format('MMM YYYY')}</TimelineEntryDates>
             </TimelineEntryHeading>
             <TimelineEntryBody>
-                {props.details}
+                <TimelineEntryDetailsDisplay details={props.details}/>
             </TimelineEntryBody>
         </TimelineEntryView>
     );

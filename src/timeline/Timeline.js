@@ -61,7 +61,7 @@ const getVisisibleTimelineEntries = (timelineEntries, filters) => {
         console.log("sorting...");
         let dateA = new Date(a.data().dateFrom);
         let dateB = new Date(b.data().dateFrom);
-        return dateA - dateB;
+        return dateB - dateA;
     })
     return visibileEntries;
 }
