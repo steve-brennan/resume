@@ -10,7 +10,8 @@ const TimelineEntryView = styled.div`
     flex: 1 1 auto;
 
     flex-direction: column;
-    /*height: 50%;*/
+    min-height: 0;
+    overflow: hidden;
 `;
 
 const TimelineEntryHeading = styled.div`
@@ -26,7 +27,9 @@ const TimelineEntryHeading = styled.div`
     font-family: ${props => props.theme.primaryFontFamily};
     background-color: ${props => props.theme.primaryColor};
     color: white;
-    height: 30px;
+    /*height: 30px;*/
+
+    flex-wrap: wrap;
 `
 
 const TimelineEntryPlace = styled.div`
@@ -59,6 +62,9 @@ const TimelineEntryBody = styled.div`
     flex: 2 1 auto;
     font-family: ${props => props.theme.primaryFontFamily};
     color: darkgrey;
+
+    min-height: 0;
+    overflow: hidden;
 `
 
 const TimelineEnrtyDetail = styled.li`
@@ -77,7 +83,6 @@ const TimelineEntryDetailsList = styled.ul`
 function TimelineEntryDetailsDisplay(props) {
 
     const detailsList = props.details.map((detail) => {
-
         return (
             <TimelineEnrtyDetail>{detail}</TimelineEnrtyDetail>
         )

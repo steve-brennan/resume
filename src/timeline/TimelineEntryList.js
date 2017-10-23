@@ -7,12 +7,16 @@ const TimelineItemBufferLeft = styled.div`
     border-right: 1px solid ${props => props.theme.primaryColor};
     flex: 1 0 auto;
 
+    min-height: 0px;
+    overflow: hidden;
 `;
 
 const TimelineItemBufferRight = styled.div`
     border-left: 1px hidden ${props => props.theme.primaryColor};
     flex: 1 0 auto;
 
+    min-height: 0px;
+    overflow: hidden;
 `;
 
 const TimelineBufferContainer = styled.div`
@@ -20,6 +24,8 @@ const TimelineBufferContainer = styled.div`
     flex: 1 0 auto ;
     flex-direction: row;
 
+    min-height: 0px;
+    overflow: hidden;
 `;
 
 function TimelineBuffer() {
@@ -35,8 +41,11 @@ const TimelineListItem = styled.li`
     display: flex;
     flex: 1 0 auto;
     width: 70%;
-    height: 50%;
     flex-direction: column;
+
+    min-height: 0;
+    overflow: hidden;
+
 `;
 
 const TimelineEntryList = styled.ul`
