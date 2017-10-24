@@ -24,7 +24,7 @@ const TimelineBufferContainer = styled.div`
     flex: 1 0 auto ;
     flex-direction: row;
 
-    min-height: 0px;
+    min-height: 10px;
     overflow: hidden;
 `;
 
