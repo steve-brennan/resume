@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {SkillTagDisplay} from './SkillTag'
+import {SkillTagDisplay} from './SkillTag';
+import {SkillViewDisplay} from './Skill';
 
 const SkillsSection = styled.section`
     margin: 0 auto;
@@ -22,8 +23,10 @@ class Skills extends Component {
 
     render() {
         return (
-            
-            <SkillTagDisplay name={"JavaScript"}/>
+            <SkillsView>
+                <SkillViewDisplay/>
+                <SkillViewDisplay/>
+            </SkillsView>
         );
     }
 }
