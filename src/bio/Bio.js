@@ -13,7 +13,7 @@ const BioView = styled.div`
     flex-direction: column;
     height: 100%;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: space-between;
 `;
 
 const BioBracket = styled.div`
@@ -32,7 +32,6 @@ const BioProperty = styled.div`
     flex: 1 0 auto;
     font-family: ${props => props.theme.primaryFontFamily};
     max-height: 30px;
-    /*align-content: flex-start;*/
     justify-content: flex-start;
     margin-left: 0px;
 
@@ -52,7 +51,7 @@ const BioPropertyValue = styled.div`
     text-align: left;
     display: inline-block;
     padding-left: 10px;
-
+    color: darkgrey;
     height: 20px;
 `
 function BioPropertyDisplay(props) {

@@ -27,6 +27,16 @@ const IntroSubHeading = styled.h2`
     color: white;
 `
 
+const IntroLogo = styled.h1`
+    text-align: center;
+    font-family: ${props => props.theme.primaryFontFamily};
+    font-size: 20px;
+    margin: 0 auto;
+    color: white;
+    font-style: italic;
+
+`
+
 class Intro extends Component {
 
     render() {
@@ -34,6 +44,9 @@ class Intro extends Component {
             <IntroSection className="intro-section">
                 <IntroHeading>Steve Brennan</IntroHeading>
                 <IntroSubHeading>Web Developer</IntroSubHeading>
+                <br/>
+                <br/>
+                <IntroLogo>Design a little => Build a little => Test a little</IntroLogo>
             </IntroSection>
         );
     }
