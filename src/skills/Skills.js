@@ -29,6 +29,7 @@ function SkillsDisplay(props) {
     let skillSet = skills.map((skill) => {
         return (
             <SkillViewDisplay
+                key={skill.id}
                 name={skill.data().name}
                 category={skill.data().category}
                 usageRecencey={skill.data().usageRecencey}
@@ -69,4 +70,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null) (Skills);
+export default connect(mapStateToProps, mapDispatchToProps) (Skills);

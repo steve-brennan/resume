@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SkillTag = styled.span`
-    background-color: green;
+    background-color: #17DD17;
     border-radius: 3px;
     color: white;
     height: 30px;
