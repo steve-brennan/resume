@@ -15,7 +15,7 @@ const SkillTag = styled.span`
 function SkillTagDisplay(props) {
 
     return (
-        <SkillTag>{props.name}</SkillTag>
+        <SkillTag className="skill-tag">{props.name}</SkillTag>
     )
 }
 

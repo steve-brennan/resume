@@ -29,20 +29,7 @@ class App extends Component {
     super();
     firebase.initializeApp(dbconfig);
 
-
-    // const db = firebase.firestore();
-
-
-    
-    // db.collection("timelineEntries").get().then((collection) =>{
-    //     //var collection = doc('entries');
-    //     collection.forEach((doc) => {
-    //         console.log(`${doc.id} => ${doc.data().role}`);
-            
-    //     });
-    // });
   }
-
 
 
 
@@ -58,4 +45,6 @@ class App extends Component {
   }
 }
 
-export default  App;
+
+
+export default App;

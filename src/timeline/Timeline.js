@@ -58,7 +58,6 @@ const getVisisibleTimelineEntries = (timelineEntries, filters) => {
         })
     }
     visibileEntries.sort((a,b) => {
-        console.log("sorting...");
         let dateA = new Date(a.data().dateFrom);
         let dateB = new Date(b.data().dateFrom);
         return dateB - dateA;

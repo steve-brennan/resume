@@ -95,7 +95,6 @@ function TimelineEntryDetailsDisplay(props) {
 }
 
 
-
 function TimelineEntryDisplay(props){
     return (
         <TimelineEntryView props={props} className="timeline-entry-view">
@@ -110,11 +109,5 @@ function TimelineEntryDisplay(props){
         </TimelineEntryView>
     );
 }
-
-// <p>{props.organisation}</p>
-// <p>{props.dateFrom.toString()}</p>
-// <p>{props.dateTo.toString()}</p>
-// <p>{props.role}</p>
-// <p>{props.details}</p>
 
 export {TimelineEntryDisplay}

@@ -16,6 +16,10 @@ export const EntryActions = {
     RECEIVE_ENTRIES: 'RECEIVE_ENTRIES',
 }
 
+export const SkillActions = {
+    RECEIVE_SKILLS: 'RECEIVE_SKILLS'
+}
+
 function requestEntries() {
     return {
         type: EntryActions.REQUEST_ENTRIES
@@ -26,6 +30,13 @@ function receiveEntries(docs) {
     return {
         type: EntryActions.RECEIVE_ENTRIES,
         timelineEntries: docs
+    }
+}
+
+function receiveSkills(docs) {
+    return {
+        type: SkillActions.RECEIVE_SKILLS,
+        skills : docs
     }
 }
 
@@ -44,6 +55,19 @@ function getEntries() {
     }
 }
 
+function getSkills() {
+    return dispatch => {
+        const db = firebase.firestore();
+        db.collection("skills").get().then((querySnapshot) =>{
+            var skills = [];
+            querySnapshot.forEach((doc) => {
+                skills.push(doc);
+            });
+            dispatch(receiveSkills(skills));
+        });
+    }
+}
+
 function shouldGetEntries(state) {
     const timelineEntries = state.timelineEntries;
     if(!timelineEntries.length > 0 ) {
@@ -59,7 +83,24 @@ export function getEntriesIfNeeded() {
             return dispatch(getEntries());
         }
     }
-} 
+}
+
+function shouldGetSkills(state) {
+    const skills = state.skills;
+    if(!skills.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+export function getSkillsIfNeeded() {
+    return(dispatch, getState) => {
+        if(shouldGetSkills(getState())) {
+            return dispatch(getSkills());
+        }
+    }
+}
 
 export function setTimelineVisibilityFilters(filter) {
     return {

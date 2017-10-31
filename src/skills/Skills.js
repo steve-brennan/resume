@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import {SkillTagDisplay} from './SkillTag';
 import {SkillViewDisplay} from './Skill';
+import {getSkillsIfNeeded} from '../actions';
+import {connect} from 'react-redux';
 
 const SkillsSection = styled.section`
     margin: 0 auto;
@@ -13,22 +15,58 @@ const SkillsView = styled.div`
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap
+    flex-wrap: wrap;
     height: 100%;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+
+    align-content: flex-start;
+
 `;
+
+function SkillsDisplay(props) {
+    let skills = props.skills;
+    let skillSet = skills.map((skill) => {
+        return (
+            <SkillViewDisplay
+                name={skill.data().name}
+                category={skill.data().category}
+                usageRecencey={skill.data().usageRecencey}
+                usageTotal={skill.data().usageTotal}
+            
+            />
+        )
+    });
+    return (
+        <SkillsView className="skills=view">{skillSet}</SkillsView>
+    );
+}
 
 class Skills extends Component {
 
+    componentDidMount() {
+        const {dispatch} = this.props;
+        dispatch(getSkillsIfNeeded());
+    }
+
     render() {
+        const {skills} =  this.props;
         return (
-            <SkillsView>
-                <SkillViewDisplay/>
-                <SkillViewDisplay/>
-            </SkillsView>
+            <SkillsDisplay skills={skills}/>
         );
     }
 }
 
-export default Skills;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        skills: state.skills
+    }
+}
+
+export default connect(mapStateToProps, null) (Skills);

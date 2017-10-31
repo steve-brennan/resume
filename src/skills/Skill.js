@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {SkillTagDisplay} from './SkillTag';
 
-
-
 const MeterUnit = styled.div`
 
 `
@@ -36,8 +34,8 @@ const TotalMeter = styled.div`
 function TotalMeterDisplay(props) {
 
     return (
-        <TotalMeter>
-            <MeterLabel>Total Usage:</MeterLabel>
+        <TotalMeter className="total-meter">
+            <MeterLabel className="meter-label">Total Usage:</MeterLabel>
             <MeterDisplay/>
         </TotalMeter>
     )
@@ -52,8 +50,8 @@ const RecenceyMeter = styled.div`
 function RecenceyMeterDisplay(props) {
 
     return (
-        <RecenceyMeter>
-            <MeterLabel>Recencey:</MeterLabel>
+        <RecenceyMeter className="recencey-meter">
+            <MeterLabel className="meter-label">Recencey:</MeterLabel>
             <MeterDisplay/>
         </RecenceyMeter>
     )
@@ -69,7 +67,7 @@ const UsageMeterView = styled.div`
 function UsageMeterDisplay(props) {
 
     return (
-        <UsageMeterView>
+        <UsageMeterView className="usage-meter-view">
             <TotalMeterDisplay/>
             <RecenceyMeterDisplay/>
         </UsageMeterView>
@@ -78,19 +76,22 @@ function UsageMeterDisplay(props) {
 
 const SkillTagView = styled.div`
     flex: 1 0 auto;
+    margin: 0 auto;
+    text-align: center;
 `
 
 const SkillMeterView = styled.div`
     display: flex;
     flex-direction: row;
 
+
 `
 
 function SkillMeterDisplay(props) {
-
+    console.log("2 PROPS" + props.name);
     return (
-        <SkillMeterView>
-            <SkillTagView>
+        <SkillMeterView className="skill-meter-view">
+            <SkillTagView className="skill-tag-view">
                 <SkillTagDisplay name={props.name}/>
             </SkillTagView>
             <UsageMeterDisplay/>
@@ -100,14 +101,24 @@ function SkillMeterDisplay(props) {
 
 const SkillView = styled.div`
     display: flex;
+    flex: 1 0 auto;
     flex-direction: column;
+
+    width: 33%;
+    max-width: 326px;
+    border: 1px solid red;
+    margin-left: 10px;
+    margin-top: 20px;
+
+    max-height: 200px;
+    min-width: 330px;
 `
 
 function SkillViewDisplay(props) {
-
+    console.log('PROPS ' + props.name);
     return (
-        <SkillView>
-            <SkillMeterDisplay/>
+        <SkillView className="skill-view">
+            <SkillMeterDisplay name={props.name}/>
         </SkillView>
     )
 }
